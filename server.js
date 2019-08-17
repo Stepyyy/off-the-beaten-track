@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
+const fs = require("fs");
 
 const dummyData = {
 	categories: "Park",
@@ -25,33 +26,58 @@ const dummyData = {
 	website: ""
 };
 
-function formatResponse(data) {
-	const response = {
-		skateparks: [],
-		campsites: []
-	};
+// function formatResponse(data) {
+// 	const response = {
+// 		skateparks: [],
+// 		campsites: []
+// 	};
 
-	const dataName = data.name;
-	const dataAddress = data.physical_address;
-	const dataLat = data.latitude;
-	const dataLong = data.longitude;
+// 	data.forEach(data => {
+// 		response.skateparks.push({
+// 			name: data.name,
+// 			address: data.physical_address,
+// 			lat: data.latitude,
+// 			long: data.longitude
+// 		});
+// 	});
 
-	response.skateparks = [
-		{
-			name: dataName,
-			address: dataAddress,
-			lat: dataLat,
-			long: dataLong
-		}
-	];
+// 	return response;
+// }
 
-	return response;
+function readJSON() {
+	const obj = JSON.parse(fs.readFileSync("skate_park.json", "utf8"));
+
+	return obj;
+}
+
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+	const R = 6371; // Radius of the earth in km
+	const dLat = deg2rad(lat2 - lat1); // deg2rad below
+	const dLon = deg2rad(lon2 - lon1);
+	const a =
+		Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		Math.cos(deg2rad(lat1)) *
+			Math.cos(deg2rad(lat2)) *
+			Math.sin(dLon / 2) *
+			Math.sin(dLon / 2);
+	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	const d = R * c; // Distance in km
+	return d;
+}
+
+function deg2rad(deg) {
+	return deg * (Math.PI / 180);
 }
 
 app.get("/hello", (req, res) => res.send("Hello World!"));
 
-app.get("/unicorn/", (req, res) => {
-	res.send(formatResponse(dummyData));
+app.get("/unicorn/", (request, response) => {
+	//const responseToSend = formatResponse(readJSON());
+	//response.send(responseToSend);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+console.log(
+	getDistanceFromLatLonInKm(-39.418986, 175.400629, -39.418147, 175.398438)
+);
