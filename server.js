@@ -1,20 +1,16 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const dummyData = {
-	skateparks: [
-		{
-			name: "Beyonce",
-			address: "4 September Avenue"
-		}
-	],
-	campsites: [
-		{
-			name: "Kanye",
-			address: "West Street"
-		}
-	]
+	skateparks: [{
+		name: "Beyonce",
+		address: "4 September Avenue"
+	}],
+	campsites: [{
+		name: "Kanye",
+		address: "West Street"
+	}]
 };
 
 app.get("/hello", (req, res) => res.send("Hello World!"));
