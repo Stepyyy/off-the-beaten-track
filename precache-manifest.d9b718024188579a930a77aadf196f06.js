@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "22d1d57b4e004f840f78857b24f9da6a",
+    "revision": "2f3f458b21f60b9c515d4e847b427152",
     "url": "/off-the-beaten-track/index.html"
   },
   {
-    "revision": "fcdf9f8bc1037e766f11",
+    "revision": "bb2ba59f8026a8dd9119",
     "url": "/off-the-beaten-track/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "571f25d4fe58e760eae1",
+    "revision": "a6af18cfb2ec307dd183",
     "url": "/off-the-beaten-track/static/css/main.a3b01e50.chunk.css"
   },
   {
-    "revision": "fcdf9f8bc1037e766f11",
-    "url": "/off-the-beaten-track/static/js/2.559cefab.chunk.js"
+    "revision": "bb2ba59f8026a8dd9119",
+    "url": "/off-the-beaten-track/static/js/2.5df93800.chunk.js"
   },
   {
-    "revision": "571f25d4fe58e760eae1",
-    "url": "/off-the-beaten-track/static/js/main.dc98a9d9.chunk.js"
+    "revision": "a6af18cfb2ec307dd183",
+    "url": "/off-the-beaten-track/static/js/main.f3025a2f.chunk.js"
   },
   {
     "revision": "bdb8201d30cf81bcb2b1",
