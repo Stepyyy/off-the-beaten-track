@@ -26,23 +26,23 @@ const dummyData = {
 	website: ""
 };
 
-// function formatResponse(data) {
-// 	const response = {
-// 		skateparks: [],
-// 		campsites: []
-// 	};
+function formatResponse(data) {
+	const response = {
+		skateparks: [],
+		campsites: []
+	};
 
-// 	data.forEach(data => {
-// 		response.skateparks.push({
-// 			name: data.name,
-// 			address: data.physical_address,
-// 			lat: data.latitude,
-// 			long: data.longitude
-// 		});
-// 	});
+	data.forEach(data => {
+		response.skateparks.push({
+			name: data.name,
+			address: data.physical_address,
+			lat: data.latitude,
+			long: data.longitude
+		});
+	});
 
-// 	return response;
-// }
+	return response;
+}
 
 function readJSON() {
 	const obj = JSON.parse(fs.readFileSync("skate_park.json", "utf8"));
@@ -50,16 +50,16 @@ function readJSON() {
 	return obj;
 }
 
-function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+function getDistanceFromLatLongInKm(lat1, lon1, lat2, lon2) {
 	const R = 6371; // Radius of the earth in km
 	const dLat = deg2rad(lat2 - lat1); // deg2rad below
 	const dLon = deg2rad(lon2 - lon1);
 	const a =
 		Math.sin(dLat / 2) * Math.sin(dLat / 2) +
 		Math.cos(deg2rad(lat1)) *
-			Math.cos(deg2rad(lat2)) *
-			Math.sin(dLon / 2) *
-			Math.sin(dLon / 2);
+		Math.cos(deg2rad(lat2)) *
+		Math.sin(dLon / 2) *
+		Math.sin(dLon / 2);
 	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	const d = R * c; // Distance in km
 	return d;
@@ -72,12 +72,20 @@ function deg2rad(deg) {
 app.get("/hello", (req, res) => res.send("Hello World!"));
 
 app.get("/unicorn/", (request, response) => {
-	//const responseToSend = formatResponse(readJSON());
-	//response.send(responseToSend);
+	const sourceLong = request.query.long;
+	const sourceLat = request.query.lat;
+	const sourceDist = request.query.dist;
+
+	const responseToSend = formatResponse(readJSON());
+
+
+	responseToSend.skateparks = responseToSend.skateparks.filter(park => {
+		const distance = getDistanceFromLatLongInKm(park.lat, park.long, sourceLat, sourceLong)
+		return (distance < sourceDist)
+
+	})
+
+	response.send(responseToSend);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-console.log(
-	getDistanceFromLatLonInKm(-39.418986, 175.400629, -39.418147, 175.398438)
-);
