@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/off-the-beaten-track/static/css/main.7ea5d013.chunk.css",
-    "main.js": "/off-the-beaten-track/static/js/main.075a157b.chunk.js",
-    "main.js.map": "/off-the-beaten-track/static/js/main.075a157b.chunk.js.map",
+    "main.css": "/off-the-beaten-track/static/css/main.a3b01e50.chunk.css",
+    "main.js": "/off-the-beaten-track/static/js/main.f3025a2f.chunk.js",
+    "main.js.map": "/off-the-beaten-track/static/js/main.f3025a2f.chunk.js.map",
     "runtime~main.js": "/off-the-beaten-track/static/js/runtime~main.299e8fe4.js",
     "runtime~main.js.map": "/off-the-beaten-track/static/js/runtime~main.299e8fe4.js.map",
     "static/css/2.266e55a5.chunk.css": "/off-the-beaten-track/static/css/2.266e55a5.chunk.css",
-    "static/js/2.a0fa2a15.chunk.js": "/off-the-beaten-track/static/js/2.a0fa2a15.chunk.js",
-    "static/js/2.a0fa2a15.chunk.js.map": "/off-the-beaten-track/static/js/2.a0fa2a15.chunk.js.map",
+    "static/js/2.5df93800.chunk.js": "/off-the-beaten-track/static/js/2.5df93800.chunk.js",
+    "static/js/2.5df93800.chunk.js.map": "/off-the-beaten-track/static/js/2.5df93800.chunk.js.map",
     "index.html": "/off-the-beaten-track/index.html",
-    "precache-manifest.537696d13762303b545c18621e6fad4b.js": "/off-the-beaten-track/precache-manifest.537696d13762303b545c18621e6fad4b.js",
+    "precache-manifest.d9b718024188579a930a77aadf196f06.js": "/off-the-beaten-track/precache-manifest.d9b718024188579a930a77aadf196f06.js",
     "service-worker.js": "/off-the-beaten-track/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/off-the-beaten-track/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.7ea5d013.chunk.css.map": "/off-the-beaten-track/static/css/main.7ea5d013.chunk.css.map",
-    "static/media/logo.svg": "/off-the-beaten-track/static/media/logo.5d5d9eef.svg"
+    "static/css/main.a3b01e50.chunk.css.map": "/off-the-beaten-track/static/css/main.a3b01e50.chunk.css.map",
+    "static/media/background.jpeg": "/off-the-beaten-track/static/media/background.1838055c.jpeg",
+    "static/media/camping.jpeg": "/off-the-beaten-track/static/media/camping.b0061264.jpeg",
+    "static/media/location.png": "/off-the-beaten-track/static/media/location.edfaa45d.png",
+    "static/media/skatepark.jpeg": "/off-the-beaten-track/static/media/skatepark.c8ffc1b4.jpeg"
   }
 }

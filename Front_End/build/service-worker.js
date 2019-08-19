@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/off-the-beaten-track/precache-manifest.537696d13762303b545c18621e6fad4b.js"
+  "/off-the-beaten-track/precache-manifest.d9b718024188579a930a77aadf196f06.js"
 );
 
 self.addEventListener('message', (event) => {

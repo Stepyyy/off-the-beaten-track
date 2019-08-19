@@ -5,6 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
+import map from './location.png';
+import homeImg from './background.jpeg';
+import Carousel from 'react-bootstrap/Carousel';
+import camping from './camping.jpeg';
+import skatepark from './skatepark.jpeg';
+
 
 class App extends React.Component {
 
@@ -23,46 +29,77 @@ class App extends React.Component {
     this.locationInput.current.value = "";
     this.distanceInput.current.value = "";
   }
- 
-  // handleChange1(input1) {
-  //   this.setState({
-  //     input1: input1
-  //   })
-  // }
 
   render() {
     return (
-      // <div className="App">
-        //<header className="App-header">
-        // <container>
-       
-        <Row className="App-header">
-       
-          <Col xs={4} >
-            <Form>
-              <Form.Group controlId="location_search">
-                <Form.Label>Destination/Location</Form.Label>
-                <Form.Control type="text" placeholder="Enter destination here" ref={this.locationInput}/>
-              </Form.Group>
-  
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Parks within distance:</Form.Label>
-                <Form.Control type="text" placeholder="20 km" ref={this.distanceInput}/>
-              </Form.Group>
-              <Button variant="primary" type="submit" onClick={e => this.helloworldfunction(e)}>
-                Submit
-              </Button>
-            </Form>
-            
-          </Col>
-          <Col xs={4}>
-            <Image src = "https://contents.mediadecathlon.com/p1554362/k$89294766ed2b0dc7be2f77e5c608bc4c/rockrider-st100-mountain-bike-grey.jpg?&f=800x800/" style={{height: 400, width:400}} rounded/>
-          </Col>
-        </Row>
-     
-       
-       //{/* </header> */}
-      //{/* </div> */}
+      <Row className="App-header">
+      <Col className="Carousel">
+      <Carousel >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={homeImg} rounded
+            alt=""
+            />
+          <Carousel.Caption>
+            <h3>OFF THE BEATEN TRACK</h3>
+            <p>Find your passion with us.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={camping} rounded
+            alt=""
+            />
+          <Carousel.Caption>
+            <h3>GLAMPING</h3>
+            <p>Just for the extra spicy.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={skatepark} rounded
+            alt=""
+            />
+          <Carousel.Caption>
+            <h3>SKATE LIFE</h3>
+            <p>For those vertically inclined.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+      </Col>
+      
+      <br></br>
+      
+      <Col xs={4} >
+        <Form>
+          <Form.Group controlId="location_search">
+            <Form.Label>Destination/Location</Form.Label>
+            <Form.Control type="text" placeholder="Enter destination here" ref={this.locationInput}/>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Parks within distance:</Form.Label>
+            <Form.Control type="text" placeholder="20 km" ref={this.distanceInput}/>
+          </Form.Group>
+
+            <Button variant="primary" type="submit" onClick={e => {
+              window.open(`https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=${this.distanceInput.current.value}`, "_blank")
+            }}>
+              Submit
+            </Button>
+        </Form>
+
+        <br></br>
+        </Col>
+
+        <Col xs={4}>
+          <Image src = {map} style={{height: 300, width:500}} rounded/>
+        </Col>
+      </Row>
+
     );
   }
 }
