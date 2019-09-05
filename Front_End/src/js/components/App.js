@@ -1,18 +1,18 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
-import map from './location.png';
-import homeImg from './background.jpeg';
+import map from '../../location.png';
+import homeImg from '../../background.jpeg';
 import Carousel from 'react-bootstrap/Carousel';
-import camping from './camping.jpeg';
-import skatepark from './skatepark.jpeg';
+import camping from '../../camping.jpeg';
+import skatepark from '../../skatepark.jpeg';
 
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   constructor(props)
   { 
@@ -104,4 +104,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
