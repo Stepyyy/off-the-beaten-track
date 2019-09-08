@@ -1,7 +1,11 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3001;
 const fs = require("fs");
+
+
+
 
 const dummyData = {
 	categories: "Park",
@@ -68,6 +72,13 @@ function getDistanceFromLatLongInKm(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
 	return deg * (Math.PI / 180);
 }
+
+
+app.use(cors());
+
+app.get('/products/:id', function(req, res, next){
+	res.json({msg: "This is CORS-enabled for all origins!"})
+})
 
 app.get("/hello", (req, res) => res.send("Hello World!"));
 
