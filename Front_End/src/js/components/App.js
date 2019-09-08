@@ -11,17 +11,41 @@ import Carousel from 'react-bootstrap/Carousel';
 import camping from '../../camping.jpeg';
 import skatepark from '../../skatepark.jpeg';
 
+import Results from './Results';
+import Header from './Header';
+import Footer from './Footer';
+
 
 export default class App extends React.Component {
 
   constructor(props)
   { 
     super(props);
+    this.state = {
+      title: "Hello World Header",
+      results: ""
+    };
     this.helloworldfunction = this.helloworldfunction.bind(this);
+    this.updateDisplay = this.updateDisplay.bind(this);
     this.locationInput = React.createRef();
     this.distanceInput = React.createRef();
   }
 
+  updateDisplay(e){
+    var url = 'https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=20';
+
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+
+    request.responseType = 'json';
+
+    request.onload = function(){
+      this.setState({results: request.response});
+    };
+
+    request.send();
+  }
+  
   helloworldfunction(e) {
     e.preventDefault();
     console.log(this.locationInput.current.value);
@@ -31,7 +55,11 @@ export default class App extends React.Component {
   }
 
   render() {
+    const propstitle = "HELLO";
+
     return (
+      <div>
+      <Header  title = {this.state.title}/>
       <Row className="App-header">
       <Col className="Carousel">
       <Carousel >
@@ -85,20 +113,25 @@ export default class App extends React.Component {
             <Form.Control type="text" placeholder="20 km" ref={this.distanceInput}/>
           </Form.Group>
 
-            <Button variant="primary" type="submit" onClick={e => {
-              window.open(`https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=${this.distanceInput.current.value}`, "_blank")
-            }}>
+            <Button variant="primary" type="button" onClick={e => {
+              this.updateDisplay();
+            }
+              //window.open(`https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=${this.distanceInput.current.value}`, "_blank")
+            }//}
+            >
+            
               Submit
             </Button>
         </Form>
-
-        <br></br>
+        <Results results = {this.state.results}/>{/*This is where I want the search results to be */}
         </Col>
 
         <Col xs={4}>
           <Image src = {map} style={{height: 300, width:500}} rounded/>
         </Col>
       </Row>
+      <Footer/>
+      </div>
 
     );
   }
