@@ -76,10 +76,6 @@ function deg2rad(deg) {
 
 app.use(cors());
 
-app.get('/products/:id', function(req, res, next){
-	res.json({msg: "This is CORS-enabled for all origins!"})
-})
-
 app.get("/hello", (req, res) => res.send("Hello World!"));
 
 app.get("/unicorn/", (request, response) => {

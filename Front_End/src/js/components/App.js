@@ -23,7 +23,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       title: "Hello World Header",
-      results: ""
+      results: ''
     };
     this.helloworldfunction = this.helloworldfunction.bind(this);
     this.updateDisplay = this.updateDisplay.bind(this);
@@ -31,21 +31,12 @@ export default class App extends React.Component {
     this.distanceInput = React.createRef();
   }
 
-  updateDisplay(e){
-    var url = 'https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=20';
+  updateDisplay(){
+    fetch('https://whispering-brook-62062.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=20')
+    .then(r => r.json())
+    .then(data => this.setState({results:JSON.stringify(data)})
+    )}
 
-    var request = new XMLHttpRequest();
-    request.open('GET', url);
-
-    request.responseType = 'json';
-
-    request.onload = function(){
-      this.setState({results: request.response});
-    };
-
-    request.send();
-  }
-  
   helloworldfunction(e) {
     e.preventDefault();
     console.log(this.locationInput.current.value);
@@ -115,15 +106,9 @@ export default class App extends React.Component {
 
             <Button variant="primary" type="button" onClick={e => {
               this.updateDisplay();
-            }
-              //window.open(`https://immense-ocean-43467.herokuapp.com/unicorn?lat=-36.865471&long=174.789798&dist=${this.distanceInput.current.value}`, "_blank")
-            }//}
-            >
-            
-              Submit
-            </Button>
+            }}>Submit</Button>
         </Form>
-        <Results results = {this.state.results}/>{/*This is where I want the search results to be */}
+        <Results results = {this.state.results}/>{/*Display Search Results here */}
         </Col>
 
         <Col xs={4}>
